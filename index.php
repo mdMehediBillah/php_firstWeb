@@ -3,56 +3,74 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Calculator</title>
   <link rel="stylesheet" href="./css/main.css">
 </head>
 <body>
-
-
 <main>
-  <?php 
-$bool = true;
-$a = 1;
-$b = 4;
-$c = "1";
+  <div class="calculator-wrapper">
+    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
+      <input type="number" name="num01" placeholder="First number" required>
+      <select name="operator" id="operator">
+        <option value="add">+</option>
+        <option value="subtract">-</option>
+        <option value="multiply">*</option>
+        <option value="divide">/</option>
+      </select>
+      <input type="number" name="num02" placeholder="Second number" required>
+      <button type="submit" name="submit" value="submit">Calculate</button>
+    </form>
 
-echo "<br>";
-$result = match ($c) {
-  1, 3, 5 => "The number is odd" ,
-  2, 4, 6 => "The number is even" ,
-  default => "The number is not 1, 2, 3, 4, 5, or 6",
-};
-echo $result;
+    <!-- Result/Error Display -->
+    <div class="result">
+      <?php
+      // Grab the form data
+      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+          $num01 = filter_input(INPUT_POST, 'num01', FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+          $num02 = filter_input(INPUT_POST, 'num02', FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+          $operator = htmlspecialchars($_POST['operator']);
 
-echo "<br>";
+          // Error handling
+          $error = false;
 
-// swith statement take a single value and it can compare it to multiple values or conditions
-switch ($a){
-  case $a > $b:
-    echo 'a is greater than b';
-    break;
-  case $a < $b:
-    echo 'a is less than b';
-    break;
-  case $a === $b:
-    echo 'a is equal to b';
-    break;
-  default:
-    echo 'a is not greater than, less than, or equal to b';
-}
+          if (empty($num01) || empty($num02) || empty($operator)) {
+              echo "<p class='error-text'>Please fill all fields!</p>";
+              $error = true;
+          } elseif (!is_numeric($num01) || !is_numeric($num02)) {
+              echo "<p class='error-text'>Please enter valid numbers!</p>";
+              $error = true;
+          } elseif ($operator === 'divide' && $num02 == 0) {
+              echo "<p class='error-text'>Cannot divide by zero!</p>";
+              $error = true;
+          }
 
-echo '<br>';
-// if statement can compare multiple values or conditions
-if ($a > $b && !$bool){
-  echo 'The first condition is true';
-} else if ($a < $b && !$bool || !$bool){
-  echo 'The second condition is true';
-} else {
-  echo 'Both conditions are false';
-}
-
-?>
-
+          // Calculate the result
+          if (!$error) {
+            $value = 0;
+              switch ($operator) {
+                  case 'add':
+                      $value = $num01 + $num02;
+                      break;
+                  case 'subtract':
+                      $value = $num01 - $num02;
+                      break;
+                  case 'multiply':
+                      $value = $num01 * $num02;
+                      break;
+                  case 'divide':
+                      $value = $num01 / $num02;
+                      break;
+                  default:
+                      echo "<p class='error-text'>Something went wrong!</p>";
+              }
+              if (isset($value)) {
+                  echo "<p class='result-text'>The result is: $value</p>";
+              }
+          }
+      }
+      ?>
+    </div>
+  </div>
 </main>
 </body>
 </html>
