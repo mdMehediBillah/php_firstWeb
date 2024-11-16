@@ -1,3 +1,9 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
 main {
   display: flex;
   justify-content: center;
@@ -7,28 +13,56 @@ main {
   color: aliceblue;
 }
 
-.form-wrapper input,
-.form-wrapper select {
-  box-sizing: border-box; /* Ensures padding and borders are included in the width */
-  width: 100%; /* Ensures consistent full-width elements */
+/* Calculator */
+
+.calculator-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 300px;
+  padding: 20px;
+  margin: 50px auto;
+  border-radius: 10px;
+  background-color: #333;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  color: #fff;
+}
+
+.calculator-wrapper form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.calculator-wrapper input,
+.calculator-wrapper select {
+  width: 100%; /* Full width for both */
+  box-sizing: border-box; /* Ensures padding doesn't affect width */
   padding: 10px;
-  margin-bottom: 15px;
   border: 1px solid #555;
   border-radius: 5px;
   background-color: #444;
   color: #fff;
   font-size: 1rem;
+  outline: none;
 }
 
-.form-wrapper input:focus,
-.form-wrapper select:focus {
-  outline: none;
+.calculator-wrapper select {
+  appearance: none; /* Remove native dropdown styling */
+  -webkit-appearance: none; /* For Safari */
+  -moz-appearance: none; /* For Firefox */
+  height: calc(2.25em + 2px); /* Align with input height */
+}
+
+.calculator-wrapper input[type="number"]:focus,
+.calculator-wrapper select:focus {
   border-color: #00aaff;
   box-shadow: 0 0 5px rgba(0, 170, 255, 0.8);
 }
 
-.form-wrapper button {
-  width: 100%;
+.calculator-wrapper button {
   padding: 10px;
   background-color: #00aaff;
   color: #fff;
@@ -39,10 +73,35 @@ main {
   transition: background-color 0.3s ease;
 }
 
-.form-wrapper button:hover {
+.calculator-wrapper button:hover {
   background-color: #0077cc;
 }
 
-.form-wrapper div {
+.calculator-wrapper button:active {
+  background-color: #005f99;
+}
+
+.calculator-wrapper .result {
+  margin-top: 10px;
+  text-align: center;
+  padding: 2px;
+  border-radius: 5px;
   width: 100%;
+}
+
+.error-text {
+  color: #ff4d4d;
+  font-size: 1rem;
+  margin-top: 10px;
+  background-color: rgb(248, 174, 174);
+  padding: 2px;
+}
+
+.result-text {
+  color: #fcfffc;
+  font-size: 1rem;
+  margin-top: 10px;
+  background-color: rgb(14, 158, 57);
+  border-radius: 12px;
+  padding: 8px;
 }

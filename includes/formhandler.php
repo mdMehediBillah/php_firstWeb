@@ -9,7 +9,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   if (empty($firstName) || empty($lastName)) {
     header('Location: ../index.php?error=emptyfields');
-    echo 'Please fill in all fields';
     exit();
   }
   if ($_GET['error'] === 'invalidname') {
