@@ -61,11 +61,27 @@ $_SERVER[""];
 
 ?> -->
 
-<?php 
+<!-- <?php 
 // Get Method _http://localhost/myWebSite/index.php?nameGet=Mehedi&age=30
 echo $_GET["nameGet"];
 echo $_GET["age"];
-?>
-
+?> -->
+<main>
+  <form action="index.php" method="post">
+<label for="firstName">firstName</label>
+<input type="text" name="firstName" id="firstName">
+<label for="lastName">lastName</label>
+<input type="text" name="lastName" id="lastName">
+<label for="favouritepet">favourite Pet?</label>
+<select name="favouritepet" id="favouritepet">
+  <option value="none">None</option>
+  <option value="cat">Cat</option>
+  <option value="dog">Dog</option>
+  <option value="bird">Bird</option>
+  <option value="fish">Fish</option>
+</select>
+    <button type="submit">Submit</button>
+  </form>
+</main>
 </body>
 </html>
