@@ -10,36 +10,94 @@
 
 
 <main>
-  <section class="form-wrapper" >
-  <!-- <?php
-  if (isset($_GET['error'])) {
-    if ($_GET['error'] === 'emptyfields') {
-      echo '<p style="color: red; font-size: 1rem;">Please fill in all fields.</p>';
-    }
-  }
-  ?> -->
-    <form action="includes/formhandler.php" method="post">
-    <div>
-      <label for="firstName">firstName</label>
-      <input type="text" name="firstName" id="firstName" placeholder="First name">
-    </div>
-    <div>
-      <label for="lastName">lastName</label>
-      <input type="text" name="lastName" id="lastName" placeholder="Last name">
-    </div>
-    <div>
-      <label for="favouritepet">favourite Pet?</label>
-      <select name="favouritepet" id="favouritepet">
-      <option value="none">None</option>
-      <option value="cat">Cat</option>
-      <option value="dog">Dog</option>
-      <option value="bird">Bird</option>
-      <option value="fish">Fish</option>
-      </select>
-    </div>
-      <button type="submit">Submit</button>
-    </form>
-  </section>
+  <?php 
+  // String operators
+$a = 'Hello';
+$b = 'World';
+$c = $a . ' ' . $b;
+echo $c;
+echo '<br>';
+
+// Arithmetic operators
+$x = 10;
+$y = 3;
+$z = $x + $y;
+$math = ($x + $y) * $y;
+echo $z;
+echo '<br>';
+echo $math;
+echo '<br>';
+// remainder
+echo $x % $y;
+echo '<br>';
+
+// Assignment operators
+$d = 5;
+$d += 10;
+// expected output: d= 15
+$d -= 5;
+// expected output: d= 10
+echo $d;
+
+// Comparison operators
+$e = 10;
+$f = 20;
+$g = $e == $f;
+// expected output: false
+$h = $e != $f;
+// expected output: true
+
+// Logical operators
+$i = true;
+$j = false;
+$k = $i && $j;
+// expected output: false
+$l = $i || $j;
+// expected output: true
+
+// Increment/Decrement operators
+$m = 5;
+$m++;
+// expected output: 6
+$n = 5;
+$n--;
+// expected output: 4
+
+// Conditional operators
+$o = 20;
+$p = 20;
+$q = ($o > $p) ? 'greater' : 'lesser';
+// expected output: lesser
+echo "<br>";
+if ($o > $p) {
+  echo 'greater';
+} else {
+  echo 'lesser';
+}
+echo "<br>";
+
+$aa = 2;
+$bb = "2";
+// compare values by type value
+if($aa === $bb) {
+  echo 'They are equal';
+}else {
+  echo 'The are not equal';
+}
+
+
+// Null coalescing operator
+$r = null;
+$s = $r ?? 'default';
+// expected output: default
+
+// Spaceship operator
+$t = 10;
+$u = 20;
+$v = $t <=> $u;
+// expected output: -1
+?>
+
 </main>
 </body>
 </html>
