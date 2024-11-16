@@ -1,0 +1,48 @@
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #1f1f1f;
+  color: aliceblue;
+}
+
+.form-wrapper input,
+.form-wrapper select {
+  box-sizing: border-box; /* Ensures padding and borders are included in the width */
+  width: 100%; /* Ensures consistent full-width elements */
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #555;
+  border-radius: 5px;
+  background-color: #444;
+  color: #fff;
+  font-size: 1rem;
+}
+
+.form-wrapper input:focus,
+.form-wrapper select:focus {
+  outline: none;
+  border-color: #00aaff;
+  box-shadow: 0 0 5px rgba(0, 170, 255, 0.8);
+}
+
+.form-wrapper button {
+  width: 100%;
+  padding: 10px;
+  background-color: #00aaff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form-wrapper button:hover {
+  background-color: #0077cc;
+}
+
+.form-wrapper div {
+  width: 100%;
+}
